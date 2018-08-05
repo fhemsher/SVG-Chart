@@ -1,5 +1,5 @@
 # SVG-Chart
-Windows 10 Stand-Alone Application: Place a Pie Chart into your web page
+Windows 10 Stand-Alone Application: Place a Pie Chart into any web page
 
 **Dowload ZIP** folder, then create a new site under inetpub/wwwroot on your computer.
 
