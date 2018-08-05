@@ -172,7 +172,7 @@
                 </TD>
             </TR>
         </TABLE>
-        Copy/Paste SVG source below, or save as .svg file, to publish in your web page:<br>
+        To publish the pie chart into your web page, copy/paste SVG source below, or save as .svg file<br>
         <div id=svgPublishDiv style=background:lightblue;text-align:left;width:90%;height:200px;overflow-y:scroll></div>
         <table>
             <tr>
@@ -393,7 +393,7 @@ function saveSvgAsFile() {
 
         var textToSave = svgPublishDiv.innerText.replace(/\\n/g, "")
         textToSave.replace(/\&/g, "&amp;")
-      
+
 
         var textToSaveAsBlob = new Blob([textToSave], {
             type: "text/xml"
