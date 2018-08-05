@@ -1,0 +1,435 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Place An SVG Pie Chart in your Web Page</title>
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script type="text/javascript" src="highlightCode.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="d3.v4.min.js"></script>
+    <link href='highlight.css' rel='stylesheet' />
+</head>
+
+<body style=font-family:arial; onload=writeEM()>
+    <center>
+        <b>Place An SVG Pie Chart in your Web Page</b>
+        <br>
+        <img src="pieChart.png" alt="" width="297" height="309" />
+        <div style=width:60%;text-align:left;>
+            Provide the chart's title. Then for each slice, include the slice's title and its associated numerical value. Include units of measurement to be associated with each value. You may adjust the size of the chart via the Scale slider.
+        </div>
+    </center>
+    <center>
+        <TABLE>
+            <TR>
+                <TD>
+                    <table style='border:3px solid black;border-radius:6px;;width:360px;'>
+                        <tr>
+                            <td align=left>
+                                Chart Title:<input id=drawChartTitleValue type="text" style=font-weight:bold;width:200px value="My Chart Title" /><br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align=center>
+                                Units of measurement: <select style="font-family:Arial" id=unitsSelect>
+<option title="none">none</option>
+<option title="centigrade">&#x2103;</option>
+<option title=fahrenheit">&#x2109;</option>
+<option title="kelvin">&#x004B;</option>
+<option title="percent">&#x0025;</option>
+<option title="nanometer">&#x339A;</option>
+<option title="micrometer">&#x339B;</option>
+<option title="millimeter">&#x339C;</option>
+<option title="centimeter">&#x339D;</option>
+<option title="kilometer">&#x339E;</option>
+<option title="inch">&#x33CC;</option>
+<option title="Area">&#x339F;</option>
+<option title="Area">&#x33A0;</option>
+<option title="Area">&#x33A1;</option>
+<option title="Area">&#x33A2;</option>
+<option  title="Volume">&#x33A3;</option>
+<option  title="Volume">&#x33A4;</option>
+<option  title="Volume">&#x33A5;</option>
+<option  title="Volume">&#x33A6;</option>
+<option  title="Volume">&#x3395;</option>
+<option  title="Volume">&#x3396;</option>
+<option  title="Volume">&#x3397;</option>
+<option  title="Volume">&#x3398;</option>
+<option  title="Volume">&#x33C4;</option>
+<option  title="Time">&#x33B0;</option>
+<option  title="Time">&#x33B1;</option>
+<option  title="Time">&#x33B2;</option>
+<option  title="Time">&#x33B3;</option>
+<option  title="Weight">&#x338D;</option>
+<option  title="Weight">&#x338E;</option>
+<option  title="Weight">&#x338F;</option>
+<option  title="Bytes">&#x3385;</option>
+<option  title="Bytes">&#x3386;</option>
+<option  title="Bytes">&#x3387;</option>
+<option  title="Hertz">&#x3390;</option>
+<option  title="Hertz">&#x3391;</option>
+<option  title="Hertz">&#x3392;</option>
+<option  title=Hertz">&#x3394;</option>
+<option  title="Voltage">&#x33B4;</option>
+<option  title="Voltage">&#x33B5;</option>
+<option  title="Voltage">&#x33B5;</option>
+<option  title="Voltage">&#x33B7;</option>
+<option  title="Voltage">&#x33B8;</option>
+<option  title="Voltage">&#x33B9;</option>
+<option  title="Watts">&#x33BA;</option>
+<option  title="Watts">&#x33BB;</option>
+<option  title="Watts">&#x33BC;</option>
+<option  title="Watts">&#x33BD;</option>
+<option  title="Watts">&#x33BE;</option>
+<option  title="Watts">&#x33BF;</option>
+<option  title="Resistance">&#x33C0;</option>
+<option  title="Resistance">&#x33C1;</option>
+<option  title="Ampere">&#x3380;</option>
+<option  title="Ampere">&#x3381;</option>
+<option  title="Ampere">&#x3382;</option>
+<option  title="Ampere">&#x3383;</option>
+<option  title="Ampere">&#x3384;</option>
+<option  title="SQUARE M OVER S">&#x33A7;</option>
+<option  title="SQUARE M OVER S SQUARED">&#x33A8;</option>
+<option  title="SQUARE RAD">&#x33AD;</option>
+<option  title="SQUARE RAD OVER S">&#x33AE;</option>
+<option  title="SQUARE RAD OVER S SQUARED">&#x33AF;</option>
+<option  title="SQUARE PA">&#x33A9;</option>
+<option  title="SQUARE KPA">&#x33AA;</option>
+<option  title="SQUARE MPA">&#x33AB;</option>
+<option  title="SQUARE GPA">&#x33AC;</option>
+<option  title="SQUARE CAL">&#x3388;</option>
+<option  title="SQUARE KCAL">&#x3389;</option>
+<option  title="SQUARE DM">&#x3377;</option>
+<option  title="SQUARE DM SQUARED">&#x3378;</option>
+<option  title="SQUARE DM CUBED">&#x3379;</option>
+<option  title="SQUARE FM">&#x3399;</option>
+<option  title="SQUARE HPA">&#x3371;</option>
+<option  title="SQUARE DA">&#x3372;</option>
+<option  title="SQUARE AU">&#x3373;</option>
+<option  title="SQUARE BAR">&#x3374;</option>
+<option  title="SQUARE OV">&#x3375;</option>
+<option  title="SQUARE PC">&#x3376;</option>
+<option  title="SQUARE IU">&#x337A;</option>
+<option  title="SQUARE PF">&#x338A;</option>
+<option  title="SQUARE NF">&#x338B;</option>
+<option  title="SQUARE MU F">&#x338C;</option>
+<option  title="SQUARE BQ">&#x33C3;</option>
+<option  title="SQUARE CD">&#x33C5;</option>
+<option  title="SQUARE C OVER KG">&#x33C6;</option>
+<option  title="SQUARE CO">&#x33C7;</option>
+<option  title="SQUARE DB">&#x33C8;</option>
+<option  title="SQUARE GY">&#x33C9;</option>
+<option  title="SQUARE HA">&#x33CA;</option>
+<option  title="SQUARE HP">&#x33CB;</option>
+<option  title="SQUARE KK">&#x33CD;</option>
+<option  title="SQUARE KM CAPITAL">&#x33CE;</option>
+<option  title="SQUARE KT">&#x33CF;</option>
+<option  title="SQUARE LM">&#x33D0;</option>
+<option  title="SQUARE LN">&#x33D1;</option>
+<option  title="SQUARE LOG">&#x33D2;</option>
+<option  title="SQUARE LX">&#x33D3;</option>
+<option  title="SQUARE MB SMALL">&#x33D4;</option>
+<option  title="SQUARE MIL">&#x33D5;</option>
+<option  title="SQUARE MOL">&#x33D6;</option>
+<option  title="Picohenry">&#x33D7;</option>
+<option  title="SQUARE PR">&#x33DA;</option>
+<option  title="SQUARE SR">&#x33DB;</option>
+<option  title="SQUARE SV">&#x33DC;</option>
+<option  title="SQUARE WB">&#x33DD;</option>
+<option  title="SQUARE V OVER M">&#x33DE;</option>
+<option  title="SQUARE A OVER M">&#x33DF;</option>
+<option  title="SQUARE GAL">&#x33FF;</option>
+<option  title="SQUARE AM">&#x33C2;</option>
+<option  title="SQUARE PM">&#x33D8;</option>
+<option  title="SQUARE PPM">&#x33D9;</option>
+</select>
+                                <br>How Many Slices? <input type="text" style=width:30px id=drawChartSliceValue /><button id=drawChartSliceButton onClick=drawChartSliceButtonClicked()>start</button>
+                                <div style=width:200px;background:lightblue;color:black;height:200px;overflow-y:scroll>
+                                    <table id=drawChartSliceTable border=1 style=width:100%;background:gainsboro;border-collapse:collapse>
+                                        <tr>
+                                            <td>#</td>
+                                            <td align=center>Slice Title</td>
+                                            <td align=center>Value</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br>After values are completed select:<br>
+                                <button onclick=publishChart()>Publish</button>
+                                <center>
+                                    Scale: <input onmousedown="ScaleChart=true" onmouseup="ScaleChart=false" onmousemove="scaleChart(this.value)" id=scaleRangeValue style=width:220px type="range" value=1 min=".1" step=.05 max="1"> <input style=width:40px
+                                        id=scaleValue type="text" value=1.0 />
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </TD>
+                <TD>
+                    <div style='background:lightblue;width:400px;height:400px;border:1px solid black'>
+                        <svg id=mySVG width=400 height=400><g id=domChartG />
+                            <svg id=wrapper ></svg>
+                        </svg>
+                    </div>
+                </TD>
+            </TR>
+        </TABLE>
+        Copy/Paste SVG source below, or save as .svg file, to publish in your web page:<br>
+        <div id=svgPublishDiv style=background:lightblue;text-align:left;width:90%;height:200px;overflow-y:scroll></div>
+        <table>
+            <tr>
+                <td>
+                    <nobr>Save SVG As:</nobr>
+                </td>
+                <td><input id="inputFileNameToSaveAs" placeholder="Include your fileName.svg"></input>
+                </td>
+                <td><button Title="Save current drawing to your computer" onclick="saveSvgAsFile()">save</button></td>
+            </tr>
+        </table>
+        <p></p>
+        <div id=emDiv style='width:100%'></div>
+        <p></p>
+    </center>
+<script>
+var Slices
+
+function drawChartSliceButtonClicked() {
+
+    if (drawChartSliceValue.value != "") {
+        for (var k = drawChartSliceTable.rows.length - 1; k > 0; k--)
+            drawChartSliceTable.deleteRow(k)
+
+        Slices = +drawChartSliceValue.value
+        var rowCnt = 1
+        for (var k = 0; k < Slices; k++) {
+            var row = drawChartSliceTable.insertRow(rowCnt++)
+            var numCell = row.insertCell(0).innerHTML = k + 1
+            var titleCell = row.insertCell(1).innerHTML = "<input type=text style=width:60px; id=pieSliceTitleValue" + k + " />"
+            var dataCell = row.insertCell(2).innerHTML = "<input type=text style=width:60px; id=pieSliceDataValue" + k + " />"
+
+        }
+
+    }
+}
+
+var ScaleChart = false
+
+function scaleChart(value) {
+
+    if (ScaleChart) {
+
+        scaleValue.value = value
+
+        var currentMatrix = domChartG.getCTM()
+
+        var matrix = mySVG.createSVGMatrix();
+        matrix.a = 1
+        matrix.b = 0
+        matrix.c = 0
+        matrix.d = 1
+        matrix.e = currentMatrix.e
+        matrix.f = currentMatrix.f
+
+        var m2s = matrix.a + "," + matrix.b + "," + matrix.c + "," + matrix.d + "," + matrix.e + "," + matrix.f
+        domChartG.setAttribute("transform", "matrix(" + m2s + ")")
+        var transformRequest = mySVG.createSVGTransform()
+        //---attach new or existing transform to element, init its transform list---
+        var myTransListAnim = domChartG.transform
+        var transList = myTransListAnim.baseVal
+
+        transformRequest.setScale(value, value)
+        transList.appendItem(transformRequest)
+        transList.consolidate()
+
+        showPublishSVG()
+    }
+
+}
+
+
+
+var SliceTitleArray = []
+var SliceDataArray = []
+
+function publishChart() {
+
+
+    if (drawChartSliceTable.rows.length > 1) {
+        //---clear previous---
+        for (var k = domChartG.childNodes.length - 1; k >= 0; k--) {
+            domChartG.removeChild(domChartG.childNodes.item(k))
+        }
+
+
+        var title = drawChartTitleValue.value
+
+        if (title != "") {
+            var scale = scaleRangeValue.value
+
+            SliceTitleArray = []
+            SliceDataArray = []
+            for (var k = 0; k < Slices; k++) {
+                var slice = Slices[k]
+                var sliceTitle = document.getElementById("pieSliceTitleValue" + k).value
+                var sliceData = +document.getElementById("pieSliceDataValue" + k).value
+
+                if (sliceTitle != "") {
+
+                    SliceTitleArray.push(sliceTitle)
+                    SliceDataArray.push(sliceData)
+                }
+            }
+
+
+            buildDrawChart(title, scale, SliceTitleArray, SliceDataArray)
+
+            for (var k = drawChartSliceTable.rows.length - 1; k > 0; k--)
+                drawChartSliceTable.deleteRow(k)
+            drawChartSliceValue.value = ""
+        }
+
+
+    }
+}
+
+
+
+function buildDrawChart(title, scale, SliceTitleArray, SliceDataArray) {
+    chartG = d3.select("#domChartG")
+    chartG.attr("transform", "translate(175,175)scale(" + scale + ")")
+        .attr("shape-rendering", "geometricPrecision")
+    chartG.attr("pointer-events", null)
+    if (unitsSelect.selectedIndex > 1) {
+        var Units = " " + unitsSelect.options[unitsSelect.selectedIndex].value.split("&#x")[0]
+
+    } else
+        var Units = ""
+    var nativeWidth = 350
+    var nativeHeight = 350
+
+    var radius = Math.min(nativeWidth, nativeHeight) / 2;
+    var arc = d3.arc()
+        .outerRadius(radius - 10)
+        .innerRadius(0);
+
+    var labelArc = d3.arc()
+        .outerRadius(radius - 40)
+        .innerRadius(radius - 40);
+
+    var pie = d3.pie()
+        .sort(null)
+        .value(function(d) {
+            return d;
+        });
+
+    var data = SliceDataArray
+
+    var g = chartG.selectAll("g")
+        .data(pie(data))
+        .enter().append("g")
+
+    var color = d3.scaleOrdinal(d3.schemeCategory20).domain(d3.range(0, 19))
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function(d, i) {
+            return color(i)
+        })
+        .attr("stroke", "#FFF")
+
+    g.append("text")
+        .attr("transform", function(d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .attr("font-size", "15px")
+        .attr("font-family", "arial")
+        .text(function(d) {
+            return d.data + Units;
+        });
+
+    g.append("text")
+        .attr("transform", function(d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", "-.6em")
+        .attr("text-anchor", "middle")
+        .attr("font-size", "15px")
+        .attr("font-family", "arial")
+        .text(function(d, i) {
+            return SliceTitleArray[i];
+        });
+
+    chartG.append("text")
+        .attr("id", "chartTitle")
+        .attr("pointer-events", "none")
+        .attr("font-family", "arial")
+        .attr("font-size", "18px")
+        .attr("font-weight", "bold")
+        .attr("fill", "black")
+        .attr("font-family", "arial")
+        .attr("x", 0)
+        .style("text-anchor", "middle")
+        .style("stroke", "none")
+        .text(title)
+        .attr("y", radius)
+        .attr("dy", "+.25em")
+
+    //----add covering rect--------
+    chartG.append("rect")
+        .attr("transform", "translate(" + (-radius) + " " + (-radius) + ")")
+        .attr("width", nativeWidth)
+        .attr("height", nativeHeight)
+        .attr("fill", "white")
+        .attr("fill-opacity", "0")
+        .attr("cursor", "default")
+
+    showPublishSVG()
+}
+
+function saveSvgAsFile() {
+
+    if (inputFileNameToSaveAs.value != "") {
+
+
+        var textToSave = svgPublishDiv.innerText.replace(/\\n/g, "")
+        textToSave.replace(/\&/g, "&amp;")
+      
+
+        var textToSaveAsBlob = new Blob([textToSave], {
+            type: "text/xml"
+        });
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = document.getElementById("inputFileNameToSaveAs").value;
+        if (fileNameToSaveAs.indexOf(".svg") == -1)
+            fileNameToSaveAs += ".svg"
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+    }
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+
+function writeEM() {
+    var em = "Contact: "
+    em += "fhem"
+    em += "sher"
+    em += "@"
+    em += "gm"
+    em += "ail."
+    em += "com"
+    emDiv.innerHTML = em + " &nbsp;&nbsp;<span style=color:maroon>Last Update: 8/07/2018</span>"
+
+}
+</script>
+</body>
+
+</html>
