@@ -239,7 +239,7 @@ function scaleChart(value) {
         transformRequest.setScale(value, value)
         transList.appendItem(transformRequest)
         transList.consolidate()
-
+        domChartG.setAttribute("scale",value)
         showPublishSVG()
     }
 
@@ -284,7 +284,7 @@ function publishChart() {
 
             for (var k = drawChartSliceTable.rows.length - 1; k > 0; k--)
                 drawChartSliceTable.deleteRow(k)
-            drawChartSliceValue.value = ""
+                drawChartSliceValue.value = ""
         }
 
 
@@ -384,6 +384,9 @@ function buildDrawChart(title, scale, SliceTitleArray, SliceDataArray) {
         .attr("fill-opacity", "0")
         .attr("cursor", "default")
 
+    chartG.attr("nativewidth",nativeWidth)
+    chartG.attr("nativeheight",nativeHeight)
+    chartG.attr("scale",scale)
     showPublishSVG()
 }
 

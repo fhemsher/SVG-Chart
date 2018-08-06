@@ -26,6 +26,7 @@ function showSourceSVG()
 }
 function showPublishSVG()
 {
+    var scale=+domChartG.getAttribute("scale")
 
 wrapper.appendChild(domChartG)
 var bb=wrapper.getBBox()
@@ -43,6 +44,12 @@ var bbh=bb.height
     publishSVG.setAttribute("width", bbw)
     publishSVG.setAttribute("height", bbh)
     var clone=domChartG.cloneNode(true)
+   var transX=175
+    var transY=175
+
+    clone.setAttribute("transform","scale("+scale+")translate("+transX+" "+transY+")")
+
+
     publishSVG.appendChild(clone)
 
     var svgString = new XMLSerializer().serializeToString(publishSVG)
