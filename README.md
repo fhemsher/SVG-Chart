@@ -9,4 +9,6 @@ To run the application, in **localhost** select the index.htm file.
 
 You may then create SVG Pie Charts to place into any web page.
 
+![](http://svg-chart.com/pieCart.png)
+
 To preview how this application works go to: http://svg-chart.com
